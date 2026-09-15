@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International SEO: Running Content Across Country Domains Without Cannibalizing Yourself | Dipankar Mukherji</title>
+<meta name="description" content="International SEO from someone who plans content across three country domains: hreflang, domain strategy, market-specific content and the mistakes that cost rankings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Dipankar<span>.</span>Mukherji</a>
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">menu</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="copywriting.html">Copywriting</a></li>
+      <li><a href="ai-seo.html">AI + MCP</a></li>
+      <li><a href="contact.html" class="nav-cta">Hire Me</a></li>
+    </ul>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <a class="a-back" href="blog.html">← all blogs</a>
+    <h1>International SEO: What I Learned Planning Content Across Three Country Domains at Once</h1>
+    <div class="a-meta">
+      <span>by Dipankar Mukherji</span><span>·</span><span>technical SEO</span><span>·</span><span>~13 min read</span><span>·</span><span style="color:var(--serp-green)">target keyword: international SEO strategy</span>
+    </div>
+  </header>
+  <div class="a-body">
+    <p>My day job involves planning and writing content for the same organization across an Indian domain, a US domain and a Canadian domain, simultaneously. In one planning cycle, that meant mapping over a hundred blog posts across the three, each with its own keyword set, its own competitors and its own buyer. I mention this not to show off, because honestly the first version of that plan taught me most of what follows by going wrong in instructive ways, but because international SEO is a subject where theory is abundant and scar tissue is rare. This is the scar tissue.</p>
+    <p>If you run, or are about to run, content across multiple countries, here is what actually matters, what the tutorials get backwards, and the specific mistakes that quietly cost rankings for months before anyone notices.</p>
+
+    <h2>First decision: how you split the world (and why it is mostly already made)</h2>
+    <p>Every international SEO guide opens with the domain structure debate: separate country domains (site.in, site.com, site.ca), subdirectories (site.com/in/), or subdomains (in.site.com). The textbook trade-offs are real: country domains send the strongest geographic signal but each starts from zero authority and multiplies your maintenance; subdirectories inherit the main domain's strength and are easiest to run but signal geography more weakly; subdomains sit awkwardly between and are usually chosen by accident.</p>
+    <p>Here is the practitioner's amendment to the textbook: <strong>in most real companies, this decision was made years ago by someone who no longer works there, and your actual job is to run the structure you inherited well.</strong> Migrating structures is a major project with real risk, justified only when the current setup is actively failing. What I can tell you from running the separate-domains model is the part the guides skip: three domains means three technical health baselines, three crawl budgets, three backlink profiles and three sets of rankings that will develop at completely different speeds. Plan capacity for that or watch one domain silently become the neglected sibling. Ours was the newest one, for over a year, and the rankings showed it.</p>
+
+    <h2>Hreflang: the most misunderstood tag in SEO</h2>
+    <p>Hreflang annotations tell search engines which version of a page serves which language and region, so an Indian searcher gets the Indian page and an American gets the American one. Simple purpose, spectacular failure rate. Industry audits have found a majority of hreflang implementations contain errors, and having debugged my share, I believe it. The reasons it goes wrong are worth understanding, because they are all preventable:</p>
+    <ul>
+      <li><strong>It must be reciprocal.</strong> If the Indian page points to the US page, the US page must point back, and both must self-reference. Miss the return link and search engines ignore the whole annotation set for that pair. This is the single most common failure, usually caused by teams updating one domain at a time.</li>
+      <li><strong>The codes are unforgiving.</strong> Language codes and region codes follow specific standards, and intuitive-looking values ("en-UK" instead of "en-GB" is the classic) silently invalidate entries. There is no error message. The tag just does nothing.</li>
+      <li><strong>It maps pages, not sites.</strong> Hreflang connects specific URL pairs. The India blog post about GST-compliant invoicing has no US equivalent and needs no annotation; the service page that exists in all three markets needs a complete set. Blanket implementations that annotate everything to everything create thousands of broken references.</li>
+      <li><strong>It is a hint, not a command.</strong> Even perfect hreflang gets overridden when other signals disagree. Which brings us to the mistake that matters more than the markup.</li>
+    </ul>
+
+    <h2>The duplication trap: why your US page ranks in India (and vice versa)</h2>
+    <p>Here is the problem that actually costs multi-country businesses money, and it is editorial, not technical. Three English-language domains, one company, one set of services. The lazy path is obvious: write the page once, publish it three times, change the currency symbol. What happens next is predictable and I have watched it happen: search engines see three near-identical pages, treat them as duplicates, pick one as canonical, and your Canadian domain's service page effectively stops existing while the Indian version half-ranks in Toronto with rupee pricing on it. Hreflang alone will not save you, because hreflang is a hint and wholesale duplication is a shout.</p>
+    <p><strong>The fix is genuine market differentiation, and it is cheaper than it sounds because the differences are real if you look for them.</strong> The same service genuinely differs by market: pricing obviously, but also regulations, buyer expectations, competitors, objections, examples and even vocabulary. When I build market-specific briefs for the same topic, the differentiation checklist looks like this:</p>
+    <ul>
+      <li><strong>Different keyword targets, researched separately.</strong> The India query, the US query and the Canada query for the same service differ in phrasing, volume and intent more often than teams assume. Ecommerce development searches in India orbit different platforms and price sensitivities than the same category in the US. One keyword map copied three times is three wrong maps.</li>
+      <li><strong>Market-native evidence.</strong> Indian case examples on the Indian domain, rupee benchmarks, GST and compliance context, local platform preferences. American pages get dollar benchmarks, US vendor comparisons, US regulatory context. This is also exactly what makes each page quotable to AI systems answering users in that market, which in 2026 is not a side benefit. It is half the point.</li>
+      <li><strong>Different competitive angles.</strong> The top-ranking competitors for the same query differ by country, so the content gap your page exploits differs too. I read the target market's actual results page before briefing every piece. Ten minutes per page, and it is the difference between localizing and translating.</li>
+      <li><strong>Local proof and trust signals.</strong> Testimonials, clients, certifications and phone numbers from the market in question. Buyers notice. So do the systems modeling which page serves whom.</li>
+    </ul>
+    <p>My working rule from running this at volume: if two market versions of a page are more than roughly two-thirds identical, one of them is not earning its existence yet.</p>
+
+    <h2>Running the editorial machine across markets</h2>
+    <p>The technical layer gets all the attention, but the operational layer is where multi-country programs actually live or die. Things I now consider non-negotiable after learning each one the annoying way:</p>
+    <p><strong>One master calendar, market column mandatory.</strong> The moment each domain gets its own planning document, priorities fork silently and the strongest market absorbs all the effort. A single calendar with a domain column keeps the allocation visible and arguable. When I built a 90-day plan across the three domains, the split itself, roughly half to the primary market and a quarter to each of the others, was a strategic decision made once, on purpose, instead of fifty times by accident.</p>
+    <p><strong>Language discipline is real work.</strong> American English for the US and Canadian domains, and consistent conventions per market, sound trivial until you are enforcing them across dozens of posts and multiple writers. Spelling is the visible part; the invisible part is idiom, units, date formats and examples. A Canadian page that says "zip code" is whispering to every local reader that nobody local was involved.</p>
+    <p><strong>Market owners for review.</strong> Every market page needs one person accountable for catching the tone-deaf detail: the holiday that does not exist there, the platform nobody there uses, the price that reads absurd. Writers can research a market; they cannot inhabit all three at once.</p>
+    <p><strong>Measure markets separately, always.</strong> Blended analytics across country domains produce blended conclusions, which are worthless. Each domain gets its own dashboards, its own ranking sets, its own monthly review. The interesting insights live in the divergence: when the same topic performs in one market and dies in another, that gap is telling you something about intent or competition that no tool volunteered.</p>
+
+
+    <h2>The per-domain technical baseline (the checklist I actually run)</h2>
+    <p>Because every country domain is its own site in the eyes of a crawler, each one needs its own technical hygiene, verified separately. The quarterly checklist I run per domain, in the order that catches the most problems fastest:</p>
+    <ul>
+      <li><strong>Search Console per property,</strong> with each domain verified and its market performance reviewed on its own. Blended views hide everything interesting.</li>
+      <li><strong>Indexation sanity:</strong> pages indexed versus pages that should be, per domain. New country domains routinely carry staging leftovers, duplicate parameters and orphaned sections that the flagship domain outgrew years ago.</li>
+      <li><strong>Hreflang validation both ways,</strong> using a crawler that checks reciprocity, because spot-checking by hand catches almost nothing. Every quarter, without fail, something has drifted: a redirected URL breaking a pair, a new page published on one domain only, a template change dropping the annotations from a section.</li>
+      <li><strong>Canonical consistency:</strong> each market page self-canonicalizing, never pointing across domains unless you genuinely intend to concede that page's rankings to the other market. Cross-domain canonicals set by accident are one of the quietest ranking killers in international setups.</li>
+      <li><strong>Local signals audit:</strong> currency, address, phone formats and structured data per market, because these feed both classic local relevance and the entity picture AI systems build of who serves whom.</li>
+      <li><strong>Speed from within the market.</strong> A site served fast in Virginia can crawl in Chennai. Test each domain from its own market's networks and devices, since that is where its buyers and its rankings live.</li>
+    </ul>
+    <p>None of this is glamorous. All of it is the difference between three domains compounding and three domains quietly interfering with each other.</p>
+
+    <h2>Should you consolidate? The question every multi-domain company eventually asks</h2>
+    <p>At some point, someone senior will ask whether the country domains should be merged into one global site with subdirectories. It is a fair question, and the honest answer is: sometimes, but far less often than the tidiness instinct suggests. Consolidation makes sense when the smaller domains have failed to build meaningful authority after real investment, when the maintenance burden is demonstrably starving the content program, or when the business itself is centralizing operations. It does not make sense as a reaction to one bad quarter, and it is never free: a cross-domain migration is months of redirect mapping, authority transfer risk and rank volatility, purchased in exchange for a structural benefit that takes a year to fully materialize.</p>
+    <p>My advice to anyone holding this decision: model it as an investment case, not an architecture preference. Estimate the smaller domains' realistic ceiling under the current structure, the migration's cost and risk honestly, and the timeline to breakeven. Written down that way, most consolidation urges dissolve, and the few that survive the arithmetic are the ones actually worth doing.</p>
+
+    <h2>The AI-era postscript: multi-market just became more valuable</h2>
+    <p>A closing observation from watching AI search develop while running these programs. AI Overviews and assistants answer users within their market context, drawing from market-relevant sources, and the expansion of AI search across nearly two hundred countries means this is now true almost everywhere. Two consequences for international operators:</p>
+    <p>First, the generic global page is now doubly weak: it under-ranks in classic results and it gives market-specific AI answers nothing local to cite. Second, and more cheerfully, the content bar outside the US remains lower than inside it in many niches. A genuinely excellent, locally grounded resource in a mid-competition market can become the default citation for an entire query category with a speed that saturated markets no longer allow. For businesses deciding where to invest their next quarter of content effort, the underserved market with real revenue potential is frequently the highest-return square on the board. It is exactly where I would look first, because it is exactly where the compounding started fastest in my own programs.</p>
+
+    <h2>Frequently asked questions</h2>
+    <h3>Do I need separate content for every English-speaking market?</h3>
+    <p>For pages meant to rank and convert, yes, differentiated if not fully separate: local keywords, pricing, proof and context. For genuinely universal content, one canonical version on one domain is more honest than three clones. The mistake is the middle path: duplication with a currency-symbol disguise, which serves no market and confuses every machine reading it.</p>
+    <h3>Is hreflang required if my sites already use country domains?</h3>
+    <p>Country domains carry strong geographic signals on their own, but hreflang still resolves the page-level ambiguity between same-language versions and protects against the wrong version ranking abroad. On multi-country English sites, I implement it, validate it quarterly, and treat unexplained cross-market rankings as the symptom that sends me back to check it.</p>
+    <h3>What is the most common international SEO mistake?</h3>
+    <p>Treating it as a markup problem when it is a content strategy problem. I have never seen perfect hreflang rescue duplicated content, and I have repeatedly seen genuinely market-differentiated content perform even where the technical implementation was mediocre. Fix the editorial layer first; the tags amplify what the content earns.</p>
+    <h3>How should a small team prioritize across markets?</h3>
+    <p>Concentrate, then expand: fully serve the highest-revenue market's money pages first, establish the second market with its handful of most valuable differentiated pages, and resist the urge to publish thinly everywhere at once. Three markets covered badly is worth less than one covered completely, and the calendar should reflect that arithmetic out loud.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Dipankar Mukherji · New Delhi, India</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

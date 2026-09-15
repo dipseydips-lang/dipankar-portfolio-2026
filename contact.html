@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hire Me | Dipankar Mukherji, Sr. Content Writer and SEO Strategist</title>
+<meta name="description" content="Hire Dipankar Mukherji for SEO content, website copy, social media programs and AI powered content systems. Based in New Delhi, working worldwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Dipankar<span>.</span>Mukherji</a>
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">menu</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="copywriting.html">Copywriting</a></li>
+      <li><a href="ai-seo.html">AI + MCP</a></li>
+      <li><a href="contact.html" class="nav-cta active">Hire Me</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero" style="padding:72px 0 56px">
+  <div class="wrap">
+    <span class="eyebrow">Let's work together</span>
+    <h1 style="font-size:clamp(2.2rem,4.6vw,3.6rem)">Tell me what you sell. I will tell you what to <em>publish</em>.</h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow">About me</span>
+      <h2 style="font-size:1.9rem;margin-bottom:18px">Dipankar "Dips" Mukherji</h2>
+      <p style="color:var(--ink-soft);margin-bottom:16px">I am a senior content writer and SEO strategist based in New Delhi, with 5+ years across B2B, SaaS, IT, ecommerce, finance and CSR. I hold an MA in Journalism and Mass Communication (IGNOU) and a BA in Journalism (University of Delhi), and I currently lead content and AI workflow integration at a 27 year old digital agency serving India, USA and Canada markets.</p>
+      <p style="color:var(--ink-soft);margin-bottom:16px">My writing philosophy is simple: generic content is a commodity, and commodities compete on price. I write from proprietary data, real client numbers and genuine points of view, which is why the work ranks and the clients return. On the technical side, I build MCP servers and AI content systems, so I can offer something rare: a senior writer who also builds the automation underneath the writing.</p>
+      <p style="color:var(--ink-soft)">Off the clock I play the tabla, write at my personal blog and occasionally turn rhythm theory into content strategy metaphors that my colleagues tolerate with grace.</p>
+
+      <div style="margin-top:36px">
+        <span class="eyebrow">Good fit projects</span>
+        <ul style="color:var(--ink-soft);padding-left:20px;line-height:2">
+          <li>Monthly SEO blog programs (4 to 12 posts per month)</li>
+          <li>AEO / GEO: content built to be cited by AI Overviews and ChatGPT</li>
+          <li>Website content: full site or key pages</li>
+          <li>SaaS content strategy and landing pages</li>
+          <li>Social media programs with monthly reporting</li>
+          <li>AI / MCP content workflow builds and audits</li>
+          <li>GEO / AEO: getting brands cited in AI Overviews and ChatGPT</li>
+        </ul>
+      </div>
+    </div>
+    <div class="contact-card reveal">
+      <dl>
+        <div><dt>Email</dt><dd><a href="mailto:dipankarmukherji1999@gmail.com">dipankarmukherji1999@gmail.com</a></dd></div>
+        <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/dipankar-mukherji-547642190/" target="_blank" rel="noopener">/in/dipankar-mukherji</a></dd></div>
+        <div><dt>Location</dt><dd>New Delhi, India (working across IST, EST and GST time zones)</dd></div>
+        <div><dt>Availability</dt><dd>Accepting 2 new retainer clients this quarter</dd></div>
+        <div><dt>Response time</dt><dd>Within 24 hours, usually much faster</dd></div>
+      </dl>
+      <a class="btn btn-solid" style="display:block;text-align:center;margin-top:28px" href="mailto:dipankarmukherji1999@gmail.com?subject=Project%20inquiry%20from%20your%20portfolio">Send a project brief</a>
+      <p class="meta-tag" style="margin-top:14px;text-align:center">No forms, no funnels. Just email me what you need.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Still deciding? Read the <span>samples</span> first.</h2>
+    <p>Three complete blogs, a full SaaS landing page and a dozen social media samples are one click away. My work makes the case better than any pitch.</p>
+    <a class="btn btn-solid" href="blog.html">Read the writing</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Dipankar Mukherji · New Delhi, India</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="blog.html">Blog</a>
+      <a href="copywriting.html">Copywriting</a>
+      <a href="ai-seo.html">AI + MCP</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecommerce Migration SEO: How to Replatform Without Burning Your Rankings | Dipankar Mukherji</title>
+<meta name="description" content="An ecommerce replatforming SEO playbook: redirect mapping, the pre-migration benchmark, launch-week monitoring and the mistakes that turn migrations into funerals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Dipankar<span>.</span>Mukherji</a>
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">menu</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="copywriting.html">Copywriting</a></li>
+      <li><a href="ai-seo.html">AI + MCP</a></li>
+      <li><a href="contact.html" class="nav-cta">Hire Me</a></li>
+    </ul>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <a class="a-back" href="blog.html">← all blogs</a>
+    <h1>Ecommerce Migration SEO: How to Replatform Without Turning Your Rankings Into a Memorial Service</h1>
+    <div class="a-meta">
+      <span>by Dipankar Mukherji</span><span>·</span><span>ecommerce · technical SEO</span><span>·</span><span>~12 min read</span><span>·</span><span style="color:var(--serp-green)">target keyword: ecommerce migration SEO</span>
+    </div>
+  </header>
+  <div class="a-body">
+    <p>There is a particular email every SEO consultant has received. It arrives three to six weeks after a store's shiny new website launched, and it says some version of: "Traffic is down 60 percent, orders have collapsed, and the development agency says these things take time. Do they take time?"</p>
+    <p>Sometimes they do. Usually, by the time that email gets written, something specific and findable went wrong, and it went wrong before launch, in the planning nobody did. Ecommerce migrations are the highest-stakes technical event in a store's life: hundreds or thousands of URLs, years of accumulated ranking equity, and revenue that reacts within days. They are also, and this is the encouraging part, extremely survivable with a process. Stores that migrate well see a brief wobble and then frequently rank better than before, because migrations are also a once-in-years chance to fix everything at once.</p>
+    <p>This is the playbook: what to do before, during and after a replatform, the mistakes that cause the funerals, and the honest expectations to set with whoever signs the invoices.</p>
+
+    <h2>First, respect what you are actually moving</h2>
+    <p>A store's search equity is not an abstract score. It lives in specific, physical places: the URLs that rank and the history attached to them, the internal link structure that tells machines what matters, the backlinks pointing at particular pages, the content on those pages, and the structured data describing the catalog. A migration threatens every one of those simultaneously. The entire discipline of migration SEO reduces to one sentence: <strong>account for every asset, and give each one a forwarding address.</strong> Everything below is that sentence, operationalized.</p>
+
+    <h2>Phase one: the benchmark (four to eight weeks before launch)</h2>
+    <p>You cannot protect what you have not counted, and you cannot diagnose a post-launch drop without a pre-launch baseline. The benchmark package I insist on before any store migration:</p>
+    <ul>
+      <li><strong>The full URL inventory.</strong> Every URL the old site has: from a complete crawl, from the sitemaps, from analytics (pages that received any traffic in twelve months), and from Search Console (pages that received any impressions). These four lists never match, and the union of them is your real inventory. Stores are always bigger than anyone thinks: parameter URLs, old campaign landing pages, discontinued products still quietly ranking.</li>
+      <li><strong>The value layer.</strong> For each URL: organic sessions, revenue, ranking keywords and positions, and backlinks. This turns a flat list into a triage map. The fifty URLs carrying most of the organic revenue get hand-level care; the long tail gets rule-based treatment. Knowing which is which before launch week is the difference between surgery and panic.</li>
+      <li><strong>The ranking snapshot.</strong> Positions for your money keywords, recorded, dated, screenshot where it matters. Post-launch, this snapshot is how you distinguish "normal migration wobble" from "the category pages are gone," which are conversations of very different temperatures.</li>
+      <li><strong>The performance baseline.</strong> Speed and Core Web Vitals numbers from the old site, because the new platform will be blamed or credited for changes, and memory is a terrible measurement instrument.</li>
+    </ul>
+
+    <h2>Phase two: the redirect map (the document that decides everything)</h2>
+    <p>If a migration has a single point of failure, it is this. The redirect map is a spreadsheet with two columns that matter, old URL and new URL, and the discipline to leave no valuable row blank. The rules that separate maps that work from maps that look like they work:</p>
+    <ul>
+      <li><strong>One-to-one wherever humanly possible.</strong> The old product page redirects to the same product's new page. The old category to the new equivalent category. Machines transfer equity along redirects that preserve meaning; they discount redirects that dump everything somewhere generic.</li>
+      <li><strong>The homepage is not a forwarding address.</strong> Blanket-redirecting dead URLs to the homepage is the most common shortcut in ecommerce migrations and functions, for equity purposes, barely better than a 404. Every valuable old URL deserves the most relevant living destination: the successor product, the parent category, the closest guide.</li>
+      <li><strong>Permanent redirects, served in one hop.</strong> 301s, not temporary 302s, and not chains where old URL A hops to old URL B before reaching the new page. Chains leak equity and patience. Flatten them in the map before launch, not in production after.</li>
+      <li><strong>Discontinued products get decisions, not defaults.</strong> A product that will never return, but has links and rankings, should redirect to its successor or category. A product returning next season should stay live with an out-of-stock state. The platform's default behavior on this is wrong for someone in every store; find out for whom before it decides silently.</li>
+      <li><strong>Test the map before launch.</strong> Run the full old-URL list against the staging environment and verify status codes and destinations programmatically. A redirect map that has never been executed is a hypothesis, and launch day is a poor laboratory.</li>
+    </ul>
+
+    <h2>Phase three: everything that is not redirects (the checklist people skip)</h2>
+    <p>Redirects preserve the addresses. The rest of the pre-launch checklist preserves what lived at them:</p>
+    <ul>
+      <li><strong>Content parity audit.</strong> New platforms and new designs love to trim: category descriptions deemed untidy, FAQ blocks that did not fit the new template, size guides, the blog's older half. Every one of those trims is rankings walking out the door in a nicer outfit. Diff the old and new versions of your top pages for content, not just existence.</li>
+      <li><strong>Metadata migration.</strong> Titles and descriptions that took years to optimize have a habit of arriving in the new CMS as auto-generated defaults. Export, map, import, verify. It is boring. So is the traffic drop it prevents.</li>
+      <li><strong>Structured data continuity.</strong> Product, offer, review and organization markup must exist on the new platform at least as completely as the old. Shopping surfaces and AI answer systems read this layer directly; a store that goes structurally silent mid-migration disappears from more than the blue links.</li>
+      <li><strong>Internal linking and navigation logic.</strong> New templates change which pages get linked from where. Verify the money categories keep their prominence and that old content's internal links get updated to final URLs rather than riding redirects forever.</li>
+      <li><strong>The rendering question.</strong> If the new storefront is JavaScript-heavy, run the raw-HTML test on staging: are products, prices, links and metadata in the server response? Migrating onto a beautiful platform that machines cannot fully read is upgrading into invisibility, and it is depressingly common.</li>
+      <li><strong>The robots and staging hygiene.</strong> Staging must be blocked from indexing; production must not inherit the block. Both directions of this mistake happen constantly, and one of them is the fastest way ever devised to remove a store from Google.</li>
+    </ul>
+
+    <h2>Launch week: the monitoring posture</h2>
+    <p>Launch is not the end of the migration. It is the start of the verification period. The first-week routine: submit the new sitemaps immediately, watch crawl stats and coverage reports daily for error spikes, run the old-URL list against production (again) to confirm redirects behave outside staging, and track the money-keyword snapshot every few days. Expect turbulence: rankings and traffic commonly dip and oscillate for two to six weeks as machines re-crawl and re-evaluate. That is the wobble, and it is survivable by design.</p>
+    <p>What is not wobble: 404 spikes in coverage reports, money pages dropping entirely out of results, or the raw-HTML test failing in production. Those are fires, and the benchmark package from phase one is what lets you spot them in days instead of discovering them in the quarterly review. The difference between stores that recover in weeks and stores that write that email in month two is almost never luck. It is whether anyone was watching with a baseline in hand.</p>
+
+    <h2>The strategic upside nobody budgets for</h2>
+    <p>A closing argument for treating migrations as opportunity rather than pure risk. A replatform is the one moment when every URL, every template and every piece of content is on the operating table with the budget already approved. The stores that come out ahead use that moment: they prune the commodity content and doorway pages that were dragging the domain, consolidate the duplicate and cannibalizing URLs the old platform generated, rebuild category pages to the standard the old templates never allowed, and launch with clean structured data and faster performance across the board.</p>
+    <p>Done that way, the post-migration story inverts: instead of six months clawing back to the old baseline, the store wobbles for a month and then climbs past it, because the migration quietly doubled as the technical and content cleanup that would otherwise never have been prioritized. That outcome is not luck either. It is a planning decision, made in phase one, by whoever insisted the migration have an SEO owner with a seat at the table from the first architecture meeting. Be that owner, or hire one. It is cheaper than the email.</p>
+
+
+    <h2>The stakeholder conversation: setting expectations before launch, not after</h2>
+    <p>One more phase, and it is political rather than technical. Migrations fail organizationally before they fail technically, and the pattern is always the same: nobody told the decision-makers what normal looks like, so the first dip triggers panic, the panic triggers blame, and the blame triggers reactive changes that turn a wobble into a spiral.</p>
+    <p>The pre-launch expectations memo I now write for every migration covers four things, in plain language. What we are protecting: the specific pages and rankings that carry the revenue, listed. What normal looks like: a temporary dip, its likely range and duration, stated before it happens so it arrives as a forecast fulfilled rather than a surprise. What abnormal looks like: the specific signals that would mean something is wrong, and the checks we will run daily to catch them. And what we will not do: no panic content changes, no reactive redirect rewiring, no platform-blaming in week two, because changing variables mid-recovery destroys the ability to diagnose anything.</p>
+    <p>That memo costs an hour and buys the project its most scarce resource: calm. A migration team that expected the wobble makes measured decisions through it. A team that was promised seamlessness makes expensive ones. Having sat in both versions of the week-three meeting, I can report that the difference in outcomes has less to do with the redirect map than anyone technical wants to admit.</p>
+    <p>And one final habit worth institutionalizing: keep the old site's crawl, the benchmark package and the redirect map archived permanently. A year later, when someone asks why a certain page ranks or where some traffic went, that archive answers in minutes what would otherwise be an afternoon of speculation. Migrations end. Their documentation should not.</p>
+
+    <h2>Frequently asked questions</h2>
+    <h3>How much traffic loss is normal during a replatform?</h3>
+    <p>A temporary dip in the range of 10 to 30 percent for two to six weeks is common even in well-executed migrations, recovering as re-crawling completes. Losses beyond that, or drops that deepen after week three, indicate a specific failure, usually in redirects, content parity or rendering, and the benchmark comparison will locate it.</p>
+    <h3>Should we migrate the blog and old content too?</h3>
+    <p>Migrate everything with value: traffic, links or rankings. Old content is frequently the store's largest reservoir of ranking equity and the easiest thing for a redesign to orphan. The migration is also the correct moment to prune what has no value, deliberately, with redirects, rather than losing it accidentally without them.</p>
+    <h3>Can we change domains and platforms at the same time?</h3>
+    <p>You can, and every compounding risk in this article doubles when you do. If business reality forces both, the process holds but the monitoring period stretches and the redirect map becomes even more sacred. If anything can be sequenced, sequence it: one variable per launch is a gift to whoever has to diagnose week three.</p>
+    <h3>When should SEO get involved in a replatforming project?</h3>
+    <p>Before the platform is chosen, ideally, because rendering behavior, URL flexibility and structured data support differ between platforms and are far cheaper to evaluate than to remediate. Failing that, the moment the project exists. The expensive migrations are the ones where SEO was invited to the launch party instead of the planning meetings.</p>
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Dipankar Mukherji · New Delhi, India</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

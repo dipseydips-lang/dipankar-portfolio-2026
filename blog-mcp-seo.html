@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Connected Claude to WordPress With MCP. Here Is What Happened | Dipankar Mukherji</title>
+<meta name="description" content="A first person account of building MCP servers that connect Claude to WordPress, SEO tools and scrapers, and the honest numbers on what got faster.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">Dipankar<span>.</span>Mukherji</a>
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('open')">menu</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="copywriting.html">Copywriting</a></li>
+      <li><a href="ai-seo.html">AI + MCP</a></li>
+      <li><a href="contact.html" class="nav-cta">Hire Me</a></li>
+    </ul>
+  </div>
+</header>
+
+<article class="article">
+  <header>
+    <a class="a-back" href="blog.html">← all blog samples</a>
+    <h1>I Connected Claude to WordPress With MCP. Here Is What Happened to Our Content Workflow</h1>
+    <div class="a-meta">
+      <span>by Dipankar Mukherji</span><span>·</span><span>AI workflow sample</span><span>·</span><span>~6 min read</span><span>·</span><span style="color:var(--serp-green)">target keyword: MCP SEO workflow</span>
+    </div>
+  </header>
+  <div class="a-body">
+    <p>Most "AI in content marketing" articles are written by people who have never shipped a client deliverable with AI in the loop. This one is different. I am a senior content writer at a digital agency, I build my own <strong>Model Context Protocol (MCP)</strong> servers, and I use them on real client work every week. Here is what that actually looks like, including the parts that did not work.</p>
+
+    <h2>First, what MCP actually is (in one paragraph)</h2>
+    <p>MCP is an open standard that lets an AI assistant like Claude connect directly to your tools: your WordPress site, your scrapers, your SEO data, your file system. Instead of copy-pasting content between ChatGPT tabs and your CMS, the AI can read your live blog posts, pull your Rank Math scores, fetch competitor pages and draft or update content in place. Think of it as giving your AI assistant hands, not just a mouth.</p>
+
+    <h2>The stack I built</h2>
+    <ul>
+      <li><strong>WordPress MCP connector:</strong> reads and writes posts on our agency's WordPress sites, including SEO metadata and Rank Math scores.</li>
+      <li><strong>Firecrawl and Fetch:</strong> pulls competitor pages and SERP content as clean markdown for analysis.</li>
+      <li><strong>Apify scrapers:</strong> Instagram and LinkedIn data for social media audits and monthly client reports.</li>
+      <li><strong>A custom SEO audit MCP server:</strong> my own build, which runs technical checks across a domain and returns structured findings I can turn into a client-ready audit.</li>
+    </ul>
+
+    <h2>What changed, with honest numbers</h2>
+
+    <h3>1. The blog audit that used to take a week now takes an afternoon</h3>
+    <p>The first serious test: auditing 22 published blog posts on our agency's own domain. Previously, this meant opening every post, checking its keyword, its Rank Math score, its internal links and its search performance by hand. With the WordPress MCP connector, Claude pulled every post with its metadata in minutes, and I spent my time where a human is actually needed: deciding what to fix first and why.</p>
+    <p>The audit surfaced the same pattern I find on most sites that have been "doing SEO" for over a year: <strong>12 to 18 indexation and on-page issues</strong> nobody had noticed, because nobody had looked at everything at once.</p>
+
+    <h3>2. Content sprints stopped being bottlenecked by research</h3>
+    <p>During a recent sprint, we shipped 15+ SEO blogs across two agency domains. The drafting was still human-led, and it has to be, because the value of our blogs comes from proprietary agency data that no model can invent. But SERP analysis, outline validation, internal link mapping and metadata generation moved to the MCP workflow. Research time per post dropped from roughly three hours to under one.</p>
+
+    <h3>3. Monthly social reports assemble themselves (mostly)</h3>
+    <p>Client social media reports used to mean screenshotting insights and rebuilding tables by hand. Now Apify scrapers pull the account data, Claude structures the analysis, and I write the part clients actually pay for: what the numbers mean and what we will do differently next month.</p>
+
+    <h2>What did not work</h2>
+    <p>Honesty section. Three things failed or underwhelmed:</p>
+    <ul>
+      <li><strong>Fully automated publishing.</strong> Technically possible, editorially reckless. Everything still passes through human review, because one hallucinated statistic in a client blog costs more trust than the automation ever saved.</li>
+      <li><strong>AI-generated "insights."</strong> Models are excellent at structure and terrible at having something to say. The proprietary observations that make our content rank came from client work, not from prompts.</li>
+      <li><strong>Set-and-forget scrapers.</strong> Platforms change. Scrapers break. Someone technical enough to fix them has to own the pipeline. That someone is now part of what a modern content role looks like.</li>
+    </ul>
+
+    <h2>What this means if you hire content people in 2026</h2>
+    <p>The debate about whether AI will replace writers misses what is actually happening. AI is replacing the parts of writing that were never really writing: collation, formatting, metadata, repetitive research. What remains, and what now compounds, is judgment. Knowing what to say, which claim needs a source, which insight is genuinely yours and which page deserves the effort.</p>
+    <p>The content professionals worth hiring now are bilingual. They speak brand and buyer fluently, and they speak tooling well enough to build their own leverage. That combination is rare, and it is exactly the combination this entire portfolio exists to demonstrate.</p>
+
+
+    <h2>How to start without an engineering team</h2>
+    <p>The good news about MCP in 2026 is that the ecosystem has matured enough that a technically curious content person, which is what I am, can assemble a serious stack without writing much code. Here is the realistic on-ramp:</p>
+    <ul>
+      <li><strong>Start with pre-built connectors.</strong> WordPress, Google Drive, web scrapers and fetch tools all have ready MCP servers. Connecting them is configuration, not programming.</li>
+      <li><strong>Automate one report first.</strong> Do not begin with publishing automation. Begin with something read-only and low-stakes, like a monthly social media report or a content inventory. You learn the workflow where mistakes cost nothing.</li>
+      <li><strong>Write your prompts down as SOPs.</strong> The difference between a toy and a system is documentation. Our content production SOP specifies which tools run at which stage, what the model is asked, and what a human checks before anything ships. That document is the actual asset. The tools are replaceable.</li>
+      <li><strong>Graduate to custom servers when you hit a wall.</strong> My custom SEO audit server exists because no off-the-shelf connector produced findings in the exact structure our client reports need. Build custom only when the pre-built world genuinely runs out.</li>
+    </ul>
+
+    <h2>The economics: what an hour is worth now</h2>
+    <p>Let me make the value concrete with the arithmetic that convinced our team. A monthly client social report used to take 4 to 5 hours: pulling numbers, rebuilding tables, formatting. The scraper-fed workflow reduced that to roughly 1 hour, of which most is the strategic commentary only a human can write. Across six clients, that is 18 to 24 recovered hours per month. Those hours did not disappear into leisure. They became additional content production, which is billable, and workflow improvements, which compound. The system paid for its own setup time within the first month, and everything after that is margin.</p>
+    <p>The same logic applied to blog audits, SERP research and internal link mapping puts the total recovered time for a small content team at something like 30 to 40 percent of previously manual hours. Not because AI writes the content, but because AI eliminated the clerical work wrapped around the content.</p>
+
+    <h2>The skills that matter now (a hiring note)</h2>
+    <p>If you run a content team, the profile to hire or train toward has changed. The valuable combination in 2026 looks like this:</p>
+    <ul>
+      <li><strong>Editorial judgment</strong>: still first, still scarce. Knowing what is worth saying and what claim needs a source.</li>
+      <li><strong>Prompt and workflow literacy</strong>: the ability to decompose a content process into steps a system can run and a human should check.</li>
+      <li><strong>Tool plumbing</strong>: comfort connecting APIs, scrapers and CMSs, and debugging them when platforms change, because platforms always change.</li>
+      <li><strong>Data reading</strong>: enough analytics fluency to know whether the machine's output actually moved anything.</li>
+    </ul>
+    <p>Writers with the first skill alone are increasingly competing on price. Writers with all four are increasingly impossible to replace, because they do not just produce content. They produce capacity.</p>
+
+    <h2>Frequently asked questions</h2>
+    <h3>Is MCP safe to connect to a live client website?</h3>
+    <p>With guardrails, yes. Ours are: read access is broad, write access is narrow, nothing publishes without human approval, and every automated change is logged. Treat the AI like a very fast junior employee: enormously useful, never unsupervised on production.</p>
+    <h3>Does AI-assisted content rank worse on Google?</h3>
+    <p>Google's stated position targets unhelpful content, however it is produced. In practice, what tanks rankings is the generic sameness of unedited AI output, not the tooling. Content built on proprietary insight and shipped through an AI-accelerated workflow ranks on its merits.</p>
+    <h3>What does a setup like this cost?</h3>
+    <p>Far less than people assume. The AI subscription, scraper credits and hosting for a small team's stack typically total less than one junior hire's monthly salary, and the setup itself is measured in days. The real investment is the workflow design and the discipline to document it.</p>
+    <h3>Where do I start if I am a solo writer?</h3>
+    <p>Connect a fetch or scraper tool and automate your SERP research for the next post you write. One afternoon of setup, and you will feel the shape of the whole idea: machines gather, humans decide.</p>
+
+  </div>
+</article>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Dipankar Mukherji · New Delhi, India</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
