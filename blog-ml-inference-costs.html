@@ -23,7 +23,7 @@
 
 
 <h2>Memory is often the hidden constraint</h2>
-<p>For transformer inference, memory is not just model weights. There is also the working memory associated with the request, especially attention-related state and cached context. Longer prompts increase resource pressure. This is why context windows are not free. When a team says a model supports a very large context, I want the next sentence to be about what that context costs in latency and memory under concurrent load. A feature can be technically available while still being economically impractical.</p>
+<p>For transformer inference, memory is not just model weights. There is also the working memory associated with the request, especially attention-related state and cached context. Longer prompts increase resource pressure. This is why context windows are not free. When a team says a model supports a very large context, the next question should be the next sentence to be about what that context costs in latency and memory under concurrent load. A feature can be technically available while still being economically impractical.</p>
 
 
 
@@ -37,7 +37,7 @@
 
 
 <h2>Latency has a psychological side</h2>
-<p>A system that takes two seconds once is different from a system that takes two seconds for every interaction in a workflow. The perceived delay compounds when the product makes several model calls. This is one reason I like measuring the whole request path rather than just model token speed. Retrieval, tool calls, reranking, policy checks and post-processing all sit between the user and the final answer. The fastest model in isolation can still produce the slowest product.</p>
+<p>A system that takes two seconds once is different from a system that takes two seconds for every interaction in a workflow. The perceived delay compounds when the product makes several model calls. This is one reason Measuring the whole request path rather than just model token speed. Retrieval, tool calls, reranking, policy checks and post-processing all sit between the user and the final answer. The fastest model in isolation can still produce the slowest product.</p>
 
 
 <h2>Caching can be more valuable than another model upgrade</h2>
@@ -50,7 +50,7 @@
 
 
 <h2>The quality metric has to survive the cost metric</h2>
-<p>A cheaper inference stack is not an improvement if error rates rise and human review doubles. I like evaluating quality and cost together. Cost per successful task is often more informative than cost per token. That shifts the conversation from &quot;this model is 30% cheaper&quot; to &quot;we complete the task at lower total operating cost without changing the outcome users receive&quot;. That is the number a product manager can actually use.</p>
+<p>A cheaper inference stack is not an improvement if error rates rise and human review doubles. Evaluating quality and cost together. Cost per successful task is often more informative than cost per token. That shifts the conversation from &quot;this model is 30% cheaper&quot; to &quot;we complete the task at lower total operating cost without changing the outcome users receive&quot;. That is the number a product manager can actually use.</p>
 
 
 
@@ -59,7 +59,7 @@
 
 
 <h2>Research notes</h2>
-<p>I checked the primary documentation and public guidance linked below while researching this piece. Those sources are the reference layer; the analysis and framing are my own editorial treatment of the topic.</p>
+<p>The research for this piece draws on the primary documentation and public guidance linked below. Those sources provide the reference layer for the analysis.</p>
 <ul class="source-list"><li><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a></li><li><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" target="_blank" rel="noopener">NIST Generative AI Profile</a></li></ul></div></article>
 <footer><div class="wrap"><div>© 2026 Dipankar Mukherji · New Delhi, India</div><nav><a href="index.html">Home</a><a href="work.html">Work</a><a href="blog.html">Blog</a><a href="copywriting.html">Copywriting</a><a href="ai-seo.html">AI + MCP</a><a href="contact.html">Contact</a></nav></div></footer>
 </body></html>
