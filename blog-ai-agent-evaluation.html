@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How to Evaluate AI Agents: A Practical Framework for Reliability, Safety and Real-World Performance | Dipankar Mukherji</title>
+<meta name="description" content="A practical guide to evaluating AI agents across task success, tool use, safety, recovery, latency, cost and production reliability."/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<article class="article">
+<div class="a-body">
+
+<p class="eyebrow">Technical Writing Sample | Artificial Intelligence</p>
+
+<h1>How to Evaluate AI Agents: A Practical Framework for Reliability, Safety and Real-World Performance</h1>
+
+<p class="article-intro">An AI agent can complete a complicated task in a demonstration and still be a poor production system. The difference is not necessarily the model. It is the environment around the model: tools, permissions, retrieval, external services, memory, state changes, failure handling and the rules that determine when the system should stop.</p>
+
+<p>That makes agent evaluation fundamentally different from checking whether a language model generated a good answer.</p>
+
+<p>A conventional model evaluation can often be reduced to a simple relationship: input goes in, output comes out, and the output is compared with an expected result. An agent introduces a chain of decisions between those two points. It may interpret the request, retrieve information, select a tool, construct arguments, inspect the result, revise its plan, call another tool and finally produce an answer or take an action.</p>
+
+<p>Every one of those steps creates another opportunity for failure.</p>
+
+<p>A useful evaluation framework therefore has to answer more than one question. Did the agent complete the task? Did it use the right information? Did it select appropriate tools? Were the tool arguments valid? Did it respect permissions? Did it recover sensibly when something failed? Did it create an unintended side effect? Did it know when human intervention was required?</p>
+
+<p>These questions matter because an agent can arrive at the correct answer through an unsafe path, or arrive at a plausible answer after making several serious mistakes.</p>
+
+<h2>Why a successful demo proves very little</h2>
+
+<p>Agent demonstrations usually operate under unusually favorable conditions. The task is clearly defined. The available tools work. The data is clean. The user request is cooperative. There are no unexpected permission errors, ambiguous records or conflicting sources. The agent may also be given a narrow environment designed around the exact workflow being demonstrated.</p>
+
+<p>Production environments do not behave that way.</p>
+
+<p>A customer support agent may encounter an account with incomplete information. A procurement agent may discover that a supplier record has changed. A finance workflow may contain two transactions that appear similar but require different treatment. An internal research agent may retrieve an outdated document. A security agent may encounter hostile instructions embedded inside a document it was asked to summarize.</p>
+
+<p>The final response can still look convincing.</p>
+
+<p>That is the dangerous part.</p>
+
+<p>Agent evaluation must therefore examine the execution path as well as the outcome. Current evaluation work increasingly treats the complete trajectory as the object being measured, including tool calls, intermediate decisions, safety behavior and recovery. NIST's current evaluation work also emphasizes broader test, evaluation, verification and validation practices for AI systems, including agentic systems. citeturn0search7turn0search20</p>
+
+<h2>The agent is the system, not the model</h2>
+
+<p>It is tempting to evaluate an agent by asking which underlying model it uses. That can be useful, but it does not answer the production question.</p>
+
+<p>Consider an enterprise agent with seven components:</p>
+
+<ul>
+<li>a foundation model that interprets instructions and generates decisions</li>
+<li>a retrieval layer that supplies documents or structured information</li>
+<li>a tool layer containing APIs and business actions</li>
+<li>an orchestration layer that manages the workflow</li>
+<li>memory or state that persists information between steps</li>
+<li>an identity and authorization layer that controls access</li>
+<li>an application layer that determines what happens after an action is requested</li>
+</ul>
+
+<p>If the agent produces a wrong result, any one of these layers could be responsible.</p>
+
+<p>The model might misunderstand the request. Retrieval might return stale information. The tool might receive an invalid parameter. Authorization might be too broad. The orchestration logic might allow an unnecessary retry loop. The external service might return an error that the agent does not understand.</p>
+
+<p>Calling the entire failure a "hallucination" does not help the engineering team fix it.</p>
+
+<p>A useful evaluation program assigns observable checks to each layer. That creates a failure map instead of a single accuracy number.</p>
+
+<h2>A practical evaluation model</h2>
+
+<p>A production-oriented framework can be organized around six dimensions:</p>
+
+<ol>
+<li><strong>Outcome:</strong> Did the agent accomplish the intended task?</li>
+<li><strong>Trajectory:</strong> Did it take a reasonable and policy-compliant path?</li>
+<li><strong>Tool use:</strong> Did it choose the correct tools and provide valid arguments?</li>
+<li><strong>Safety:</strong> Did it stay inside its authorization and security boundaries?</li>
+<li><strong>Recovery:</strong> Did it handle uncertainty, failure and escalation appropriately?</li>
+<li><strong>Operations:</strong> Did it meet acceptable latency, cost and reliability requirements?</li>
+</ol>
+
+<p>These dimensions should not necessarily be collapsed into one score. A weighted score can hide serious weaknesses. An agent with excellent task completion but poor authorization behavior should not receive a passing grade because its average score looks strong.</p>
+
+<p>For high-impact workflows, some criteria should be treated as gates. For example, an agent might be required to achieve a minimum task-success rate while also recording zero unauthorized state-changing actions. A failure in the second category should remain visible even if the overall score is high.</p>
+
+<h2>1. Start with the task, not the model</h2>
+
+<p>The first step in evaluation is to define what success means for the actual workflow.</p>
+
+<p>"Answer customer questions accurately" is too vague for a serious evaluation set. A better task definition might specify that the agent must identify the customer's account, retrieve the latest approved policy, determine whether the request is eligible, provide the correct response and create a support ticket only when escalation criteria are met.</p>
+
+<p>That definition creates several testable conditions.</p>
+
+<p>The agent must identify the correct record. It must retrieve the correct policy. It must interpret eligibility correctly. It must provide an answer grounded in the approved source. It must not create a ticket unnecessarily. It must create one when the escalation rule applies.</p>
+
+<p>Now the workflow can be tested at several levels.</p>
+
+<p><strong>End-state correctness</strong> asks whether the requested business outcome was achieved.</p>
+
+<p><strong>Action correctness</strong> asks whether the state changes were appropriate.</p>
+
+<p><strong>Evidence correctness</strong> asks whether the result was based on valid information.</p>
+
+<p><strong>Policy correctness</strong> asks whether the workflow stayed within its defined rules.</p>
+
+<p>This approach is more useful than simply asking whether the final response "sounds right."</p>
+
+<h2>2. Evaluate the trajectory, not just the destination</h2>
+
+<p>Two agents can produce the same final answer while following very different paths.</p>
+
+<p>Suppose an agent is asked to identify the status of an order. The correct path may involve retrieving the order from the commerce platform and checking the latest fulfillment event. An inefficient agent might search a general knowledge base, call an analytics API, retry the wrong endpoint and eventually retrieve the correct record.</p>
+
+<p>If only the final answer is evaluated, both agents pass.</p>
+
+<p>Operationally, they are not equivalent.</p>
+
+<p>The second agent consumed more resources, introduced unnecessary failure points and may have behaved dangerously under slightly different conditions. Trajectory evaluation makes those differences visible.</p>
+
+<p>Useful trajectory signals include:</p>
+
+<ul>
+<li>tool selection and ordering</li>
+<li>number of tool calls</li>
+<li>unnecessary retries</li>
+<li>repeated retrieval of identical information</li>
+<li>use of stale or irrelevant context</li>
+<li>failure to stop after a definitive result</li>
+<li>attempts to access information outside the task scope</li>
+<li>actions taken after a permission or validation failure</li>
+</ul>
+
+<p>The goal is not to force every agent to follow one rigid sequence. Different valid paths can exist. The evaluation should distinguish between acceptable variation and behavior that creates unnecessary risk.</p>
+
+<h2>3. Tool use deserves its own scorecard</h2>
+
+<p>Tool use is one of the most important differences between an ordinary language model and an agent.</p>
+
+<p>A tool call can fail in several distinct ways.</p>
+
+<p>The agent can select the wrong tool. It can select the correct tool but use the wrong parameter. It can pass a syntactically valid parameter that refers to the wrong record. It can make the same call repeatedly. It can call a tool when no call was necessary. It can ignore a tool result. Or it can interpret a successful API response as proof that the requested business action actually succeeded.</p>
+
+<p>These should not be treated as one category.</p>
+
+<table>
+<thead>
+<tr><th>Failure type</th><th>What to test</th></tr>
+</thead>
+<tbody>
+<tr><td>Tool selection</td><td>Was the appropriate capability selected?</td></tr>
+<tr><td>Schema validity</td><td>Were required fields and data types correct?</td></tr>
+<tr><td>Argument correctness</td><td>Did the parameters refer to the intended entity and operation?</td></tr>
+<tr><td>Permission compliance</td><td>Was the requested action authorized?</td></tr>
+<tr><td>Result interpretation</td><td>Did the agent correctly understand the tool response?</td></tr>
+<tr><td>Side-effect correctness</td><td>Did the external state change match the intended action?</td></tr>
+<tr><td>Termination</td><td>Did the agent stop when the task was complete?</td></tr>
+</tbody>
+</table>
+
+<p>This separation turns an abstract agent failure into an engineering diagnosis.</p>
+
+<h2>4. A successful API response is not necessarily a successful task</h2>
+
+<p>This distinction is easy to overlook.</p>
+
+<p>An API may return a valid HTTP response even though the business operation did not produce the intended result. An update request may be accepted but applied to the wrong record. A search endpoint may return an empty result because the parameters were incorrect. A ticketing system may create a duplicate because the agent retried after a timeout without confirming whether the first request succeeded.</p>
+
+<p>Evaluation should therefore include state verification wherever possible.</p>
+
+<p>For a state-changing action, the test should ask not only whether the tool call returned successfully, but whether the resulting state is correct. This is particularly important for financial transactions, account changes, procurement actions, customer records and other workflows where a duplicate or unauthorized action can create real consequences.</p>
+
+<p>Idempotency, transaction status and post-action verification are therefore evaluation concerns, not merely backend implementation details.</p>
+
+<h2>5. Safety is an evaluation category, not a policy document</h2>
+
+<p>Security controls are meaningful only when they can be tested.</p>
+
+<p>An agent that has access to business tools needs explicit boundaries around what it may read, modify or trigger. Least privilege should be enforced by the surrounding system rather than left entirely to the model's interpretation of an instruction.</p>
+
+<p>This becomes especially important when the agent processes untrusted information.</p>
+
+<p>A document, webpage, email or database record can contain text that looks like an instruction. If the agent treats every piece of retrieved text as an authoritative command, the information source can influence behavior beyond its intended role. NIST has specifically studied agent hijacking and indirect prompt injection, where malicious instructions embedded in data can cause an agent to take unintended actions. citeturn0search16</p>
+
+<p>Evaluation should therefore include adversarial cases.</p>
+
+<p>Examples include:</p>
+
+<ul>
+<li>a retrieved document containing instructions unrelated to the user's request</li>
+<li>a webpage asking the agent to reveal hidden information</li>
+<li>a tool response containing unexpected instructions</li>
+<li>a user attempting to bypass an authorization boundary</li>
+<li>conflicting instructions from different sources</li>
+<li>a request that requires human approval before a state-changing action</li>
+</ul>
+
+<p>The important measurement is not simply whether the agent refuses. It is whether the agent recognizes the boundary, avoids unsafe action and provides an appropriate next step.</p>
+
+<h2>6. The agent needs to know when it does not know</h2>
+
+<p>Reliable automation requires calibrated uncertainty.</p>
+
+<p>An agent should not treat every task as something it must complete autonomously. Some requests are ambiguous. Some records conflict. Some tools return incomplete information. Some actions require approval.</p>
+
+<p>A mature workflow defines escalation conditions.</p>
+
+<p>For example, an agent might be permitted to answer routine questions automatically but required to escalate when identity cannot be verified, when two authoritative records conflict, when a transaction exceeds a threshold or when the requested action changes a sensitive account attribute.</p>
+
+<p>Evaluation can then measure escalation quality.</p>
+
+<ul>
+<li>Did the agent escalate when it should have?</li>
+<li>Did it avoid unnecessary escalation?</li>
+<li>Did it provide the human reviewer with the relevant evidence?</li>
+<li>Did it preserve the state needed to continue the task?</li>
+<li>Did it clearly explain why intervention was required?</li>
+</ul>
+
+<p>Human review is not necessarily evidence of an incomplete system. In high-impact workflows, a well-designed escalation path can be part of the system's reliability model.</p>
+
+<h2>7. Build evaluation data from real work</h2>
+
+<p>A benchmark made entirely of synthetic examples can be useful for early development, but it is unlikely to capture the full messiness of production.</p>
+
+<p>A stronger evaluation set combines several sources.</p>
+
+<p><strong>Representative tasks</strong> cover the routine work the agent is expected to perform.</p>
+
+<p><strong>Ambiguous tasks</strong> test whether the system asks for clarification or chooses a safe path.</p>
+
+<p><strong>Failure tasks</strong> simulate unavailable tools, malformed responses, timeouts and missing information.</p>
+
+<p><strong>Adversarial tasks</strong> test security boundaries and attempts to manipulate the agent.</p>
+
+<p><strong>Regression tasks</strong> preserve previously observed production failures so that the same mistake does not return after a model, prompt or tool change.</p>
+
+<p>Real production traces are particularly valuable because they reveal where users actually create complexity. A workflow that appears simple in design documentation may contain dozens of variations once real requests arrive.</p>
+
+<p>Every important failure should have a path back into the evaluation set.</p>
+
+<h2>8. Not every test needs a language model as the judge</h2>
+
+<p>Automated evaluation is attractive because agent runs can generate large amounts of data. But a language model should not automatically be used as the evaluator for every criterion.</p>
+
+<p>Some checks are deterministic.</p>
+
+<p>Was the correct account ID used? Was the transaction amount within the permitted threshold? Was an unauthorized endpoint called? Was the expected field present? Did the system create one record instead of two?</p>
+
+<p>These conditions can often be tested with ordinary assertions.</p>
+
+<p>Other criteria require semantic judgement. Did the response correctly summarize a complex case? Did it answer the user's actual question? Was the explanation sufficiently complete?</p>
+
+<p>Those may benefit from rubric-based human review or model-assisted evaluation.</p>
+
+<p>The strongest evaluation systems usually combine deterministic checks, specialized graders and human review rather than assuming one scoring mechanism can measure everything.</p>
+
+<p>NIST's ARIA work provides a useful broader precedent here: its evaluation approach combines model testing, red teaming and user testing rather than relying on a single measurement method. citeturn0search8turn0search17</p>
+
+<h2>9. Use rubrics that describe observable behavior</h2>
+
+<p>A rubric should tell an evaluator what evidence constitutes success.</p>
+
+<p>"The agent should reason well" is not a useful criterion.</p>
+
+<p>"The agent must identify the latest approved policy, cite the source record and avoid making a decision when the policy version cannot be verified" is much easier to evaluate.</p>
+
+<p>Good rubrics also separate partial success from critical failure.</p>
+
+<p>An agent that retrieves the correct document but summarizes one minor detail incorrectly is different from an agent that retrieves the wrong policy and confidently recommends an action based on it.</p>
+
+<p>The distinction matters because the remediation is different.</p>
+
+<p>The first problem may require better extraction or summarization. The second may require changes to retrieval, source ranking, authorization or workflow design.</p>
+
+<h2>10. Test recovery, not just failure</h2>
+
+<p>Failures are inevitable in complex systems. The important question is what happens next.</p>
+
+<p>Consider an agent that calls an inventory service and receives a timeout.</p>
+
+<p>A poor recovery strategy is to repeat the same request indefinitely.</p>
+
+<p>A better strategy might retry once, check whether the operation is idempotent, use an approved fallback source if one exists, and then escalate if the result remains unavailable.</p>
+
+<p>The evaluation should measure this behavior.</p>
+
+<p>Useful recovery metrics include:</p>
+
+<ul>
+<li>time to detect failure</li>
+<li>number of retries</li>
+<li>successful recovery rate</li>
+<li>duplicate-action rate</li>
+<li>appropriate escalation rate</li>
+<li>number of unnecessary tool calls after failure</li>
+<li>percentage of tasks abandoned safely rather than completed incorrectly</li>
+</ul>
+
+<p>A system that fails safely can be more useful than one that appears highly autonomous but continues acting after its assumptions have broken.</p>
+
+<h2>11. Measure cost and latency at the task level</h2>
+
+<p>Model cost alone does not tell the full story.</p>
+
+<p>An agent can use an inexpensive model and still become expensive if it performs excessive retrieval, makes unnecessary tool calls or enters long retry loops. Conversely, a more capable model may be commercially sensible if it completes a complex workflow with fewer failures and less human intervention.</p>
+
+<p>The relevant metric is often closer to <strong>cost per successful task</strong> than cost per model call.</p>
+
+<p>The same principle applies to latency.</p>
+
+<p>A ten-second response may be acceptable for a research workflow but unacceptable for a customer-facing checkout process. An internal analyst may tolerate a longer run if it produces a substantially better result. A real-time support workflow may need a strict response budget.</p>
+
+<p>Evaluation should therefore define the service envelope before deployment.</p>
+
+<p>That envelope might include maximum execution time, maximum tool calls, maximum retry count and maximum cost per completed task.</p>
+
+<h2>12. Repeatability matters more than a single impressive run</h2>
+
+<p>Agent behavior can vary from one execution to another. That means one successful run does not provide strong evidence of reliability.</p>
+
+<p>A useful test should be repeated enough times to reveal variability, especially for critical workflows.</p>
+
+<p>One way to think about this is to separate average success from consistency. An agent that succeeds on nine out of ten runs may look excellent in a demo. An agent that succeeds on every run of a smaller but business-critical task may be more appropriate for production.</p>
+
+<p>This is also why evaluation datasets should be versioned.</p>
+
+<p>When the model changes, the prompt changes, a retrieval index is rebuilt or a tool schema is modified, the same important cases should be rerun. A regression suite becomes the memory of the system's known failure modes.</p>
+
+<h2>13. Production monitoring completes the evaluation loop</h2>
+
+<p>Pre-release evaluation cannot predict every production failure.</p>
+
+<p>Real users introduce unexpected language, incomplete information and workflows that were never represented in the original test set. External systems also change. APIs are updated. Documents become stale. Permissions change. New attack patterns appear.</p>
+
+<p>Production monitoring therefore needs to feed the evaluation program.</p>
+
+<p>A useful lifecycle looks like this:</p>
+
+<ol>
+<li>Define the task and acceptable behavior.</li>
+<li>Create representative and adversarial evaluation cases.</li>
+<li>Run deterministic and semantic checks.</li>
+<li>Red-team the workflow.</li>
+<li>Release with operational limits.</li>
+<li>Monitor production traces and incidents.</li>
+<li>Turn important failures into permanent regression tests.</li>
+<li>Re-evaluate after model, prompt, retrieval or tool changes.</li>
+</ol>
+
+<p>This turns evaluation from a launch checklist into an ongoing engineering discipline.</p>
+
+<h2>14. A practical release scorecard</h2>
+
+<p>Before an agent enters production, an organization should be able to answer the following questions with evidence rather than confidence:</p>
+
+<table>
+<thead>
+<tr><th>Area</th><th>Release question</th></tr>
+</thead>
+<tbody>
+<tr><td>Task success</td><td>Does the agent complete representative tasks correctly?</td></tr>
+<tr><td>Grounding</td><td>Does it use the correct and current evidence?</td></tr>
+<tr><td>Tool use</td><td>Does it select and call tools correctly?</td></tr>
+<tr><td>Authorization</td><td>Are sensitive actions enforced outside the model?</td></tr>
+<tr><td>Security</td><td>Does the system resist prompt injection and other agent-specific attacks?</td></tr>
+<tr><td>Recovery</td><td>Does it fail safely when tools or information are unavailable?</td></tr>
+<tr><td>Escalation</td><td>Does it know when a human decision is required?</td></tr>
+<tr><td>Latency</td><td>Does execution fit the workflow's service requirements?</td></tr>
+<tr><td>Cost</td><td>Is cost per successful task commercially acceptable?</td></tr>
+<tr><td>Observability</td><td>Can operators reconstruct what happened after a failure?</td></tr>
+<tr><td>Regression</td><td>Are known production failures permanently represented in testing?</td></tr>
+</tbody>
+</table>
+
+<p>A release decision should also specify which failures are unacceptable. This is especially important for systems that can change external state. A minor wording error and an unauthorized financial action should never be treated as equivalent failures simply because both reduce an aggregate score.</p>
+
+<h2>The difference between an impressive agent and a dependable one</h2>
+
+<p>The next stage of agent development will not be defined only by how many tasks systems can automate. It will also be defined by how convincingly organizations can demonstrate that those systems behave within known boundaries.</p>
+
+<p>That requires a change in evaluation mindset.</p>
+
+<p>The question is no longer simply whether an agent can perform a task.</p>
+
+<p>It is whether the organization can explain:</p>
+
+<ul>
+<li>what the agent is allowed to do</li>
+<li>which tasks it performs reliably</li>
+<li>where it tends to fail</li>
+<li>how those failures are detected</li>
+<li>what happens when a tool becomes unavailable</li>
+<li>which actions require human approval</li>
+<li>how the system handles untrusted information</li>
+<li>how much a successful task costs</li>
+<li>how production incidents become future tests</li>
+</ul>
+
+<p>That is a much higher standard than a successful demonstration, but it is the standard required when an AI system moves from generating text to taking actions.</p>
+
+<p>Agent evaluation is ultimately about establishing a defensible boundary of trust. Inside that boundary, automation can operate with measurable confidence. Outside it, the system should slow down, ask for clarification, request approval or hand the task to a person.</p>
+
+<p>The strongest agent is therefore not the one that acts most autonomously.</p>
+
+<p>It is the one whose autonomy is measurable, constrained and appropriate to the work it has been given.</p>
+
+<h2>Sources and further reading</h2>
+
+<p>National Institute of Standards and Technology, <a href="https://www.nist.gov/artificial-intelligence/ai-research/tevv-athlon-framework-evaluating-ai-systems">TEVV-Athlon Framework for Evaluating AI Systems</a>.</p>
+<p>National Institute of Standards and Technology, <a href="https://www.nist.gov/publications/aria-evaluation-planning-manual-elements-aria-style-ai-evaluations">ARIA Evaluation Planning Manual</a>.</p>
+<p>National Institute of Standards and Technology, <a href="https://www.nist.gov/news-events/news/2025/01/technical-blog-strengthening-ai-agent-hijacking-evaluations">Strengthening AI Agent Hijacking Evaluations</a>.</p>
+<p>National Institute of Standards and Technology, <a href="https://www.nist.gov/programs-projects/building-evaluation-probes-agentic-ai">Building Evaluation Probes into Agentic AI</a>.</p>
+
+</div>
+</article>
+</body>
+</html>

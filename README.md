@@ -1,21 +1,9 @@
-# Dipankar Mukherji | Senior Content Writer, SEO Strategist & AI Content Systems Builder
+# Dipankar Mukherji Portfolio
 
-Personal writing and portfolio website for Dipankar Mukherji.
+A focused portfolio of writing, SEO strategy, technical content, industry-specific work and AI/search analysis.
 
-## Portfolio
-
-- Industry writing across B2B, manufacturing, home services, real estate, education, ecommerce, travel, jewelry, entertainment and more
-- SEO and content marketing work
-- AI, MCP and content systems
-- Copywriting and selected client work
+The writing archive is intentionally curated rather than presented as a count-based collection. It separates personal editorial work from technical, strategic and brand-focused writing so the voice and purpose of each piece are clear.
 
 ## GitHub Pages
 
-This is a static HTML/CSS/JavaScript website and is ready to publish with GitHub Pages.
-
-For a personal GitHub Pages site, create a repository named:
-
-`YOUR-GITHUB-USERNAME.github.io`
-
-Upload the contents of this repository to the root of that repository and enable GitHub Pages from **Settings → Pages** using the main branch and root folder.
-
+The site is static HTML/CSS and can be published directly through GitHub Pages.
